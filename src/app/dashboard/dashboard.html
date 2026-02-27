@@ -1,0 +1,58 @@
+<div class="Daskbord">
+  <div class="Sidebar">
+    <h2 class="Logo" style="color: brown;">MyApp</h2>
+
+    <ul>
+      <li (click)="selectedMenu='Home'" >Home</li>
+      <li (click)="selectedMenu='Profile'">Profile</li>
+      <li (click)="selectedMenu='Settings'">Settings</li>
+      <li (click)="logout()"><button>Logout</button></li>
+    </ul>
+  </div>
+
+  <div class="main">
+
+        <div *ngIf="selectedMenu === 'Home'">
+      <h2>Welcome {{ user?.firstName }}</h2>
+
+       <input type="file" (change)="onHomeImageUpload($event)">
+
+  <div class="image-grid">
+    <div class="image-card" *ngFor="let img of homeImages; let i = index">
+      <img [src]="img" class="home-img">
+      <button class="delete-btn" (click)="deleteImage(i)">Delete</button>
+    </div>
+  </div>
+    </div>
+            
+
+    <div  *ngIf="selectedMenu === 'Profile'" class="profile-card">
+ 
+       <div class="profile-cover">
+    <img 
+      [src]="user?.photo ? user.photo : 'https://via.placeholder.com/600x300'"
+      class="cover-img"
+    />
+    <input type="file" (change)="onImageUpload($event)">
+  </div>
+  <div>
+    
+ 
+    <div class="info-row">
+        <p>
+          Name:  {{ user?.firstName }} {{ user?.lastName }}
+    </p>
+      <p>Email: {{ user?.email }}</p>
+      <p>Phone: {{ user?.phone }}</p>
+      <p>Father Name: {{ user?.fatherName }}</p>
+      <p>Gender: {{ user?.gender }}</p>
+      <p>Address: {{ user?.address }}</p>
+      <p>DOB: {{ user?.DOB }}</p>
+      </div>
+      </div>
+    </div>
+    <div *ngIf="selectedMenu === 'Settings'">
+      <h3>Settings Page</h3>
+    </div>
+  </div>
+</div>

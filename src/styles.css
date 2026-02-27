@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin:0;
+    padding:0;
+    background: rgb(219, 215, 210);
+}
+body {
+  margin: 0; /*   margin padding : default browser spacing hata deta hai, page ka content bilkul top-left se start hota hai.*/
+  padding: 0;
+  font-family: Arial, sans-serif;
+  /* background-color: rgb(33, 33, 136); */
+  
+
+  /*pura page ka font Arial ho jata hai.*/
+}
+.top-h1 {
+  background-color: #a9ebcf;
+  padding: 10px 20px;
+  display: flex; /* row me align karta hai */
+  align-items: center; /* vertical center */
+  gap: 40px; /* elements ke beech space */
+}
+.top-h1 img {
+  width: 50px; /*width and fixe the image size*/
+  height: 50px;
+  cursor: pointer; /*  hover karne pe cursor hand ban jata hai, clickable lagta hai.*/
+}
+.top-h1 h1 {
+  margin: 0; /*h1 ka default top/bottom margin hata diya.*/
+  cursor: pointer; /* headings bhi click karne layak lagte hain*/
+  font-size: 20px; /*font size ko fixe krta hai    */
+}
+
+h4 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40px;
+}
+
+p {
+  font-size: 18px;
+  margin: 100px;
+  line-height: 1.6; /* readability */
+  margin-bottom: 40px;
+  text-align: left;
+}

@@ -1,0 +1,48 @@
+<div class="main-container">
+  <div class="signup-box">
+    <h2>Signup</h2>
+
+    <form (ngSubmit)="onSignup()">
+        <br>Firstname<br>
+      <input type="text" [(ngModel)]= "firstName" name="firstName" placeholder="FirstName" />
+      <br />Lastname<br />
+      <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="LastName" />
+      <br />fatherName<br />
+      <input type="text" [(ngModel)]="fatherName" name="fatherName" placeholder="FatherName" />
+
+      <br />Email<br />
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" />
+      
+      <br />Password<br />
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
+      
+      <br />ConformPassword<br />
+      <input
+        type="password"
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <br/>PhoneNumber<br />
+      <input type="text" [(ngModel)]="phone" name="phone" placeholder="Phone Number" />
+      
+      <br />Gender<br />
+      <select [(ngModel)]="gender" name="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <br />DOB<br />
+      <input type="text" [(ngModel)]="DOB" name="DOB" placeholder="DOB" />
+
+      <br><Address></Address><br>
+      <textarea [(ngModel)]="address" name="address" placeholder="Address"></textarea>
+      <br /><br />
+      <button type="submit">Register</button>
+      
+      <p class="back-link" >
+  <a routerLink="/login">Back to Login</a>
+  </p> 
+    </form>
+  </div>
+</div>

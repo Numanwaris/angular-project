@@ -1,0 +1,30 @@
+<div class="flex items-center justify-center">
+
+    <div style="margin:50px; max-width:400px;" class="login-card">
+      <h2>Login</h2>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    
+        <div style="margin-bottom:20px; text-align: left;">
+          <input type="email" name="email" [(ngModel)]="email"  placeholder="Email" required email>
+          <div style="color:red;" *ngIf="loginForm.submitted && !email">
+            Email is required
+          </div>
+        </div>
+    
+        <div style="margin-bottom:20px; text-align: left; ">
+          
+          <input type="password" name="password" [(ngModel)]="password"  placeholder="Password" required minlength="4">
+          <div style="color:red;" *ngIf="loginForm.submitted && password.length < 4">
+            Password must be at least 4 characters
+          </div>
+        </div>
+        <div ><p> 
+        <a routerLink="/signup" style="color:blue; cursor:pointer;">
+            <button>Sign Up</button>
+         </a>
+         </p>
+         </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+</div>
