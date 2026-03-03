@@ -38,6 +38,7 @@ input:focus {
 /* Button */
 button {
   width: 100%;
+  margin: 10px;
   padding: 10px;
   background: linear-gradient(to right, #8e2de2, #ff416c);
   border: none;
@@ -73,4 +74,7 @@ button:hover {
 }
 .justify-center{
     justify-content: center;
+}
+.h2{
+font-size: 20px;
 }

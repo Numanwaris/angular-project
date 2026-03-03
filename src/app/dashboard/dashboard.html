@@ -1,58 +1,203 @@
-<div class="Daskbord">
-  <div class="Sidebar">
-    <h2 class="Logo" style="color: brown;">MyApp</h2>
+<div class="h-screen flex flex-col">
+  <!-- MAIN LAYOUT -->
+  <div class="flex flex-1 bg-gray-100">
 
-    <ul>
-      <li (click)="selectedMenu='Home'" >Home</li>
-      <li (click)="selectedMenu='Profile'">Profile</li>
-      <li (click)="selectedMenu='Settings'">Settings</li>
-      <li (click)="logout()"><button>Logout</button></li>
-    </ul>
-  </div>
+    <!-- SIDEBAR -->
+    <div class="w-64 bg-white shadow-md p-6">
 
-  <div class="main">
+      <h2 class="text-xl font-bold mb-6">MyApp</h2>
 
-        <div *ngIf="selectedMenu === 'Home'">
-      <h2>Welcome {{ user?.firstName }}</h2>
+      <ul class="space-y-4 text-gray-600">
+        <li class="cursor-pointer hover:text-blue-600"
+            (click)="selectedMenu='Home'">Dashboard</li>
+        <li class="cursor-pointer hover:text-blue-600"
+            (click)="selectedMenu='Profile'">Profile</li>
+            <li  class="cursor-pointer hover:text-blue-600"
+            (click)="selectedMenu='Quiz'">Quiz</li>
+        <li class="cursor-pointer hover:text-blue-600"
+            (click)="selectedMenu='Settings'">Settings</li>
+        <li class="cursor-pointer text-red-500"
+            (click)="logout()">Logout</li>
+      </ul>
 
-       <input type="file" (change)="onHomeImageUpload($event)">
-
-  <div class="image-grid">
-    <div class="image-card" *ngFor="let img of homeImages; let i = index">
-      <img [src]="img" class="home-img">
-      <button class="delete-btn" (click)="deleteImage(i)">Delete</button>
     </div>
-  </div>
-    </div>
-            
 
-    <div  *ngIf="selectedMenu === 'Profile'" class="profile-card">
- 
-       <div class="profile-cover">
-    <img 
-      [src]="user?.photo ? user.photo : 'https://via.placeholder.com/600x300'"
-      class="cover-img"
-    />
-    <input type="file" (change)="onImageUpload($event)">
-  </div>
-  <div>
-    
- 
-    <div class="info-row">
-        <p>
-          Name:  {{ user?.firstName }} {{ user?.lastName }}
-    </p>
-      <p>Email: {{ user?.email }}</p>
-      <p>Phone: {{ user?.phone }}</p>
-      <p>Father Name: {{ user?.fatherName }}</p>
-      <p>Gender: {{ user?.gender }}</p>
-      <p>Address: {{ user?.address }}</p>
-      <p>DOB: {{ user?.DOB }}</p>
+    <!-- CONTENT -->
+    <div class="flex-1 p-8 overflow-y-auto tex-d">
+
+      <!-- HOME -->
+      <div *ngIf="selectedMenu === 'Home'">
+
+        <h1 class="text-2xl font-semibold mb-6">
+          Welcome {{ user?.firstName }}
+        </h1>
+
+        <input type="file"
+               (change)="onHomeImageUpload($event)"
+               class="mb-6 border p-2 rounded-lg bg-white">
+
+        <!-- IMAGE GRID -->
+        <div class="grid grid-cols-2 gap-6">
+
+          <div *ngFor="let img of homeImages; let i=index"
+               class="relative bg-white rounded-xl shadow overflow-hidden">
+
+            <img [src]="img"
+                 class="w-full h-48 object-cover">
+
+            <button
+              (click)="deleteImage(i)"
+              class="absolute top-3 right-3 bg-black text-white px-3 py-1 rounded-lg text-sm">
+              Delete
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
-      </div>
-    </div>
-    <div *ngIf="selectedMenu === 'Settings'">
-      <h3>Settings Page</h3>
-    </div>
+
+
+      <!-- PROFILE -->
+     <div *ngIf="selectedMenu === 'Profile'"
+     class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+
+  <div class="text-center">
+
+    <img [src]="user?.photo ? user.photo : 'https://via.placeholder.com/150'"
+         class="w-32 h-40 object-cover rounded-lg mx-auto mb-4">
+
+    <input type="file"
+           (change)="onImageUpload($event)"
+           class="mb-6">
   </div>
+
+  <div class="space-y-3 text-gray-700 text-sm">
+
+    <div>
+      <label class="font-semibold">First Name</label>
+      <input type="text"
+             [(ngModel)]="user.firstName"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">Last Name</label>
+      <input type="text"
+             [(ngModel)]="user.lastName"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">Email</label>
+      <input type="email"
+             [(ngModel)]="user.email"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">Phone</label>
+      <input type="text"
+             [(ngModel)]="user.phone"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">Father Name</label>
+      <input type="text"
+             [(ngModel)]="user.fatherName"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">Gender</label>
+      <input type="text"
+             [(ngModel)]="user.gender"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">Address</label>
+      <input type="text"
+             [(ngModel)]="user.address"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label class="font-semibold">DOB</label>
+      <input type="date"
+             [(ngModel)]="user.DOB"
+             class="w-full mt-1 p-2 border rounded-lg">
+    </div>
+
+    <button
+      (click)="saveProfile()"
+      class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mt-4">
+      Save Changes
+    </button>
+
+  </div>
+
+</div>
+           <div *ngIf="selectedMenu ==='Quiz'" class=" max-w-2xl mx-auto bg-white p-6 rounded-xl shadow">
+                     
+            <div *ngIf="quizFinished" class="text-center">
+
+                <h2 class="text-2xl font-bold mb-4">Quiz Completed</h2>
+                <p class="text-blue-600 text-lg">Corret:{{score}} </p>
+                <p class="text-red-500 text-lg">Wrong :{{wrong}}</p>
+               
+                <button (click)="restartQuiz()" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                           RestartQuiz
+                </button>
+
+            </div>
+                    
+            <div *ngIf="!quizFinished">
+                   <h2 class="text-xl font-semibold mb-4">
+                     Question {{currentQuestionIndex+1}}:{{quizQuestions[currentQuestionIndex].question}}
+
+                   </h2>
+
+                   <div class="space-y-3">
+                    <div *ngFor="let option of
+                    quizQuestions[currentQuestionIndex].options "
+                    (click)="selectOption(option)"
+                   [ngClass]="selectedOption === option 
+           ? 'bg-blue-500 text-white p-3 rounded cursor-pointer' 
+           : 'bg-gray-100 p-3 rounded cursor-pointer hover:bg-gray-200'">
+
+                        {{option}}
+                    </div>
+                    
+                   </div>
+                                   <button (click)="nextQuestion()" [disabled]="!selectedOption" 
+                                   class="mt-6 bg-green-600 text-white px-6 py-2 
+                                   rounded-lg hover:bg-green-700 disabled:bg-gray-400">
+                                   Next    
+                                   </button>
+            </div>
+
+
+
+
+           </div>
+
+
+
+
+
+
+
+
+
+      <!-- SETTINGS -->
+      <div *ngIf="selectedMenu === 'Settings'">
+        <h2 class="text-2xl font-semibold">Settings Page</h2>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
